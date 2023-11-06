@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Advocatus Online',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Advocatus</b>Online',
+    'logo_img' => 'vendor/adminlte/dist/img/icono.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Advocatus Online',
 
     /*
     |--------------------------------------------------------------------------
@@ -84,10 +84,10 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
+            'path' => 'vendor/adminlte/dist/img/icono.png',
+            'alt' => 'Advocatus Online',
             'class' => '',
             'width' => 50,
             'height' => 50,
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'vendor/adminlte/dist/img/icono.png',
+            'alt' => 'Advocatus Online',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -294,7 +294,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -302,10 +302,10 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ],
+       // [
+       //     'type' => 'sidebar-menu-search',
+       //     'text' => 'Buscar',
+      //  ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -336,18 +336,33 @@ return [
                     'route'  => 'admin.courses.index',
                 ],               
                 [
-                    'text' => 'level_one',
+                    'text' => 'Certificados',
                     'url'  => '#',
                 ],
             ],
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'Chat WhatsApp',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fab fa-whatsapp',
             'label'       => 4,
             'label_color' => 'success',
         ],
+        [
+            'text'    => 'Campaña Marketing',
+            'icon'    => 'fas fa-bullhorn',
+            'submenu' => [
+                [
+                    'text' => 'Programar Campaña',
+                    'url'  => '#',
+                ],               
+                [
+                    'text' => 'Plantillas WhatsApp',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
