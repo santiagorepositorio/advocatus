@@ -33,7 +33,7 @@
         @if ($course->price->value == 0)
         <p class="my-2 font-bold text-green-900">Gratis</p>
         @else
-            <p class="my-2 font-bold text-gray-500">US$ {{ $course->price->value }}</p>
+            <p class="my-2 font-bold text-gray-500">Bs. {{ $course->price->value }}</p>
         @endif
         <a href="{{ route('courses.show', $course) }}" class="btn btn-primary btn-block">
             Mas Detalles

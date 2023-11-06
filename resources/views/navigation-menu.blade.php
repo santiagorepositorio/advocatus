@@ -33,15 +33,17 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                
+
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/" class="flex-shrink-0 flex items-center mx-6">
-                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}" alt="ITSW">
-                        <img class="block lg:hidden h-12 w-auto" src="{{ asset('assets/imgs/theme/icono.png') }}" alt="ITSW">
+                        <img class="hidden lg:block h-12 w-auto" src="{{ asset('assets/imgs/logo/logo-top-1.png') }}"
+                            alt="ITSW">
+                        <img class="block lg:hidden h-12 w-auto" src="{{ asset('assets/imgs/theme/icono.png') }}"
+                            alt="ITSW">
                     </a>
                 </div>
 
-                <!-- Navigation Links 
+                <!-- Navigation Links
                 class="
                   fixed
                   left-0
@@ -58,9 +60,9 @@
                   translate-x-full
                   md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0
                "-->
-               
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" >
-                    
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
                     @foreach ($nav_links as $nav_link)
                         <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
                             <h1 class="text-bold sm:text-lg lg:text-xl xl:text-xl">{{ $nav_link['name'] }}</h1>
@@ -124,7 +126,7 @@
                     </div>
                 @endif
 
-                <!-- Settings Dropdown -->
+                <!-- ICONO DE PREFERENCIAS -->
                 <div class="hidden md:block md:ml-3">
                     @livewire('dropdown-cart')
                 </div>
@@ -168,11 +170,11 @@
                                 <x-jet-dropdown-link href="{{ route('courses.my-courses') }}">
                                     Mis Cursos
                                 </x-jet-dropdown-link>
-                                @can('admin.home')
-                                <x-jet-dropdown-link href="{{ route('admin.home') }}">
-                                    Administrador
-                                </x-jet-dropdown-link>
-                                    
+
+                                @can('Listar roles')
+                                    <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                                        Administrador
+                                    </x-jet-dropdown-link>
                                 @endcan
                                 @can('Listar cursos')
                                     <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
@@ -262,6 +264,9 @@
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         Perfil
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('courses.my-courses') }}" :active="request()->routeIs('courses.my-courses')">
+                        Mis Cursos
                     </x-jet-responsive-nav-link>
                     @can('Listar cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">

@@ -19,12 +19,13 @@
 
                 @forelse (Cart::content() as $item)
                     <li class="flex p-4 border-gray-200">
-                        <img class="w-10 h-16 object-cover object-center mr-4" src="{{ Storage::url($item->model->image->url) }}" alt="{{ $item->model->title }}">
+                        <img class="w-10 h-16 object-cover object-center mr-4"
+                            src="{{ Storage::url($item->model->image->url) }}" alt="{{ $item->model->title }}">
                         <article class="flex-1">
                             <h3 class="font-bold text-xs">
-                                <a href="{{route('courses.show', $item->model)}}">{{ $item->model->title }}</a>
+                                <a href="{{ route('courses.show', $item->model) }}">{{ $item->model->title }}</a>
                             </h3>
-                            <p class="text-sm">US$ {{ $item->price }}</p>
+                            <p class="text-sm">Bs. {{ $item->price }}</p>
                         </article>
                     </li>
                 @empty
@@ -37,16 +38,16 @@
 
             @if (Cart::count())
                 <div class="py-2 px-3">
-                    <p class=" text-base text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> US$
+                    <p class=" text-base text-gray-700 mt-2 mb-3"><span class="font-bold">Total:</span> Bs.
                         {{ Cart::subtotal() }}</p>
-                        {{-- {{ route('shopping-cart') }} --}}
-                    <x-button-enlace href="{{ route('shopping-cart') }}" color="blue" class="w-full">
-                        Ver carrito
-                    </x-button-enlace>
-
+                    
+                    {{-- <x-button-enlace href="{{ route('shopping-cart') }}" color="blue" class="w-full">
+                        Eliminar Lista
+                    </x-button-enlace> --}}
                 </div>
             @endif
 
         </x-slot>
     </x-jet-dropdown>
+
 </div>

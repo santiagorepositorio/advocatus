@@ -21,18 +21,18 @@ class PriceSeeder extends Seeder
         ]);
 
         Price::create([
-            'name' => '19.99 US$',
-            'value' => 19.99
+            'name' => '200 Bs.',
+            'value' => 200
         ]);
 
         Price::create([
-            'name' => '49.99 US$',
-            'value' => 49.99
+            'name' => '100 Bs.',
+            'value' => 100
         ]);
 
         Price::create([
-            'name' => '99.99 US$',
-            'value' => 99.99
+            'name' => '50 Bs.',
+            'value' => 50
         ]);
     }
 }
