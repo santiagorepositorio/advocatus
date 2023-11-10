@@ -412,19 +412,19 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Guía Referencial'],
         [
-            'text'       => 'important',
+            'text'       => 'Importante',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Precaución',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'información',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
