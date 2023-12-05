@@ -17,7 +17,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>

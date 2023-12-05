@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->string('wa_id');
+            $table->string('wam_id');
+            $table->string('type', 15);
+            $table->boolean('outgoing');
+            $table->longText('body');
+            $table->string('status', 15);
+            $table->longText('caption')->nullable();
+            $table->binary('data');
             $table->timestamps();
         });
     }

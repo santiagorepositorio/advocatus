@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -56,6 +57,10 @@ class CourseController extends Controller
                             ->latest('id')
                             ->take(5)
                             ->get();
+
+             
+
+               
         return view('courses.show', compact('course', 'similares'));
         
     }
@@ -63,8 +68,10 @@ class CourseController extends Controller
     public function enrolled(Course $course)
     {
         $course->students()->attach(auth()->user()->id);
+     
         return redirect()->route('courses.status', $course);
     }
+ 
 
     public function myCourses(){
         $courses = auth()->user()->courses_enrolled()->orderBy('course_user.created_at', 'desc')->paginate(12);

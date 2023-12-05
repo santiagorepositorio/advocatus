@@ -92,6 +92,12 @@
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                             type="email" name="email">
                     </div>
+                    <div class="mt-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">No de Celular</label>
+                        <input id="phone"
+                            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            type="phone" name="phone">
+                    </div>
 
                     <div class="flex flex-col my-4">
                         <div class="flex justify-between">
@@ -168,7 +174,8 @@
                     <span class="border-b w-1/4 lg:w-1/4"></span>
                 </div>
                 <div class="mt-2 flex items-center justify-between gap-3">
-                    <a href="#" class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+                    <a href="#"
+                        class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326667 333333"
                             shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                             image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd">
@@ -187,7 +194,8 @@
                         </svg>
                         <span>Google</span>
                     </a>
-                    <a href="#" class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+                    <a href="#"
+                        class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 124.8 123.36">
                             <defs>
@@ -241,11 +249,11 @@
                     <span class="border-b w-1/5 md:w-1/8"></span>
                     <p class="text-center text-sm text-gray-600 mt-2">Si ya tienes una Cuenta? </p>
                     <a href="{{ route('login') }}"
-                                            class="text-blue-600 text-center hover:text-blue-700 hover:underline" title="Sign In">Inicia
-                                            Sesión</a>
+                        class="text-blue-600 text-center hover:text-blue-700 hover:underline" title="Sign In">Inicia
+                        Sesión</a>
                     <span class="border-b w-1/5 md:w-1/8"></span>
                 </div>
-                
+
             </div>
         </div>
     </div>

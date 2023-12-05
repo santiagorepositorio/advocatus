@@ -3,7 +3,7 @@
 @section('title', 'Advocatus Online')
 
 @section('content_header')
-    <h1>Advocatus</h1>
+    <h1>Gestion de Usuarios</h1>
 @stop
 
 @section('content')

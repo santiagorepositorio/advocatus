@@ -6,11 +6,12 @@ use App\Models\Course;
 use App\Models\Lesson;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 
 class CourseStatus extends Component
 {
     use AuthorizesRequests;
-    public $course, $current;
+    public $course, $current, $status_c;
     public function mount(Course $course){
         $this->course = $course;
 
@@ -25,6 +26,11 @@ class CourseStatus extends Component
             $this->current = $course->lessons->last();
         }
         $this->authorize('enrolled', $course);
+
+        $this->status_c = DB::table('course_user', 'cu')
+        ->where('cu.course_id', 2)
+        ->where('cu.user_id', auth()->user()->id)
+        ->get('status');
     }
     public function render()
     {

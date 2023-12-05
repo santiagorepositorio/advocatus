@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CourseStatus;
 use App\Http\Livewire\ShoppingCart;
 use App\Http\Livewire\ShoppingCartPayment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
 use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
@@ -21,6 +22,14 @@ use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/prueba', function () {
+//     $status = DB::table('course_user', 'cu')
+//                             ->where('cu.course_id', 2)
+//                             ->where('cu.user_id', auth()->user()->id)
+//                             ->get('status');
+
+//     return $status;
+// });
 Route::get('/', HomeController::class)->name('home');
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');

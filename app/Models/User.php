@@ -20,6 +20,10 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    const NUEVO = 1;
+    const REGULAR = 2;
+    const INACTIVO = 3;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +32,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
     ];
 

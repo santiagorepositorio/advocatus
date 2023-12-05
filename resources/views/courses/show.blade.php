@@ -17,6 +17,8 @@
                 <p class="mb-2"><i class="fas fa-th-list"></i> Categoria: {{ $course->category->name }}</p>
                 <p class="mb-2"><i class="fas fa-users"></i> Matriculados: {{ $course->students_count }}</p>
                 <p class="mb-2"><i class="fas fa-star"></i> Calificacion: {{ $course->rating }}</p>
+            
+              
             </div>
         </div>
     </section>

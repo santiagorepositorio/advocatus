@@ -60,8 +60,7 @@
             <div class="mt-2 flex items-center justify-between gap-1">
                 <form action="{{ route('courses.enrolled', $course) }}" method="post">
                     @csrf
-                    <input type="text" name="" id="">
-                    <button class="btn btn-danger btn-block w-80 mb-2" type="submit">Registrarse al Curso</button>
+                    <button class="btn btn-danger btn-block w-70 mb-2" type="submit">Pre Inscribirse</button>
                 </form>
                 <button
                     class="btn btn-{{ Cart::instance('shopping')->content()->where('id', $this->course->id)->first()? 'danger': 'primary' }} w-30 mb-2"
