@@ -102,4 +102,9 @@ public function courses_enrolled(){
 public function lessons(){
     return $this->belongsToMany('App\Models\Lesson');
 }
+
+public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
+    }
 }

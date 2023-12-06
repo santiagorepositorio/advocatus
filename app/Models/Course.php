@@ -102,4 +102,9 @@ class Course extends Model
     public function lessons(){
         return $this->hasManyThrough('App\Models\Lesson', 'App\Models\Section');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
+    }
 }
