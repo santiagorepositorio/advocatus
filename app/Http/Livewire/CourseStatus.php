@@ -28,7 +28,7 @@ class CourseStatus extends Component
         $this->authorize('enrolled', $course);
 
         $result = DB::table('course_user', 'cu')
-        ->where('cu.course_id', 96)
+        ->where('cu.course_id', $course->id)
         ->where('cu.user_id', auth()->user()->id)
         ->get('status');
         $this->status = $result->isNotEmpty() ? $result[0]->status : null;
