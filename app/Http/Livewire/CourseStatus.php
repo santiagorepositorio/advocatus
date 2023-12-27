@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class CourseStatus extends Component
 {
     use AuthorizesRequests;
-    public $course, $current, $status;
+    public $course, $current, $statusr;
     public function mount(Course $course){
         $this->course = $course;
 
@@ -28,10 +28,10 @@ class CourseStatus extends Component
         $this->authorize('enrolled', $course);
 
         $result = DB::table('course_user', 'cu')
-        ->where('cu.course_id', 96)
+        ->where('cu.course_id', $course->id)
         ->where('cu.user_id', auth()->user()->id)
-        ->get('status');
-        $this->status = $result->isNotEmpty() ? $result[0]->status : null;
+        ->get('statusr');
+        $this->statusr = $result->isNotEmpty() ? $result[0]->statusr : null;
 
      
 

@@ -328,6 +328,23 @@ return [
             'active'    => ['admin/users*']
         ],
         [
+            'text'        => 'Customer',
+            'route'         => 'admin.customers.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'label_color' => 'danger',
+            'can'   => 'Crear cursos',
+            'active'    => ['admin/customers*']
+        ],
+        ['header' => 'Configuraciones de Cursos'],
+        [
+            'text'        => 'Category',
+            'route'         => 'admin.categories.index',
+            'icon'        => 'fas fa-fw fa-cogs',
+            'label_color' => 'danger',
+            'can'   => 'Crear cursos',
+            'active'    => ['admin/categories*']
+        ],
+        [
             'text'    => 'Opciones de Cursos',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -336,11 +353,19 @@ return [
                     'route'  => 'admin.courses.index',
                 ],               
                 [
+                    'text' => 'Cursos Actuales',
+                    'route'  => 'admin.courses.courses-users',
+                ],               
+                [
                     'text' => 'Certificados',
                     'url'  => '#',
                 ],
             ],
         ],
+
+
+
+        
         [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/pages',
@@ -363,55 +388,7 @@ return [
             ],
         ],
         
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+       
         ['header' => 'Guía Referencial'],
         [
             'text'       => 'Importante',

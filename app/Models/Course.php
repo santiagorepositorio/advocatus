@@ -16,6 +16,9 @@ class Course extends Model
     const BORRADOR = 1;
     const REVISION = 2;
     const PUBLICADO = 3;
+    const PREINSCRITO = 1;
+    const INSCRITO = 2;
+    const CERTIFICADO = 3;
     
     public function getRatingAttribute(){
         if($this->reviews_count){

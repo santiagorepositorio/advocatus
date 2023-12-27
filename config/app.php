@@ -159,6 +159,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -182,7 +183,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+    
         /*
          * Package Service Providers...
          */
@@ -213,7 +215,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+       
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         //php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
     ])->toArray(),
 

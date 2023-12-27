@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
@@ -7,10 +8,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CourseStatus;
 use App\Http\Livewire\ShoppingCart;
 use App\Http\Livewire\ShoppingCartPayment;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
 use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +34,7 @@ use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 
 //     return $status;
 // });
+
 Route::get('/', HomeController::class)->name('home');
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');
@@ -56,3 +61,7 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 Route::get('shopping-cart/checkout', ShoppingCartPayment::class)
     ->middleware('auth', 'items_in_the_shopping_cart')
     ->name('shopping-cart.checkout');
+
+Route::get('/certificate/{course}', [CourseController::class, 'generateCertificate'])->name('certificate');
+
+

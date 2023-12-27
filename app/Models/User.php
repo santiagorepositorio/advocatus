@@ -23,6 +23,7 @@ class User extends Authenticatable
     const NUEVO = 1;
     const REGULAR = 2;
     const INACTIVO = 3;
+    const EMPLEADO = 4;
 
     /**
      * The attributes that are mass assignable.

@@ -9,7 +9,7 @@
         <div class="card-header input-group mb-3">
             <input type="text" wire:keydowm="limpiar_page" wire:model="search" class="form-control w-80" placeholder="Escribe un Nombre..." aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
-                <a class="btn btn-primary" href="{{ route('admin.users.usersfull') }}" ><i class="fas fa-user-plus mr-2"></i>Agregar Empleado</a>
+              <a class="btn btn-danger" href="{{ route('admin.users.index') }}" >Cancelar</a>
             </div>
           </div>
         
@@ -29,7 +29,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.users.edit', $user) }}">Edit</a></td>
+                            <td width="10px"><a class="btn btn-success" href="{{ route('admin.users.agregar_empleado', $user) }}">Agregar</a></td>
                             
                         </tr>
                     @empty

@@ -133,7 +133,15 @@
 <x-app-layout>
     @livewire('banner-index')
 
-
+    <section class="mt-4 p-4">
+        <h1 class="text-center text-3xl text-gray-600">CURSOS MAS VENDIDOS</h1>
+        <p class="text-center text-gray-500 text-sm mb-6"></p>
+        <div class="container mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+            @foreach ($courses as $course)
+                <x-course-card :course="$course" />
+            @endforeach
+        </div>
+    </section>
     
     @livewire('profiles-one')
     <!-- Latest News and Resources -->
@@ -663,15 +671,7 @@
         </div>
     </section>
 
-    <section class="mt-4 p-4">
-        <h1 class="text-center text-3xl text-gray-600">PRODUCTOS  MAS VENDIDOS</h1>
-        <p class="text-center text-gray-500 text-sm mb-6"></p>
-        <div class="container mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
-            @foreach ($courses as $course)
-                <x-course-card :course="$course" />
-            @endforeach
-        </div>
-    </section>
+    
 
 
 

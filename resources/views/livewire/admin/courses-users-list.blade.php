@@ -1,36 +1,36 @@
 <div>
-    <x-slot name="course">
-        {{ $course->slug }}
-    </x-slot>
-    <h1 class="text-2xl font-bold mb-4">ESTUDIANTES DEL CURSO</h1>
-    <hr class="mt-2 mb-6">
     <x-table-responsive>
         <div class="px-6 py-4 flex">
             <input wire:model="search" type="text" class="form-input flex-1 w-full rounded-lg shadow-sm"
-                placeholder="Ingrese un dato">
-            <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear Curso</a>
+                placeholder="Ingrese Nombre o Celular del Cliente">
+            <a class="btn btn-danger ml-2" href="{{ route('admin.courses.courses-users') }}">Cancelar @if($userid)
+                {{$userid->id}}
+                <!-- El código aquí se ejecutará si $variable está vacía -->
+            @endif
+            </a>
         </div>
-        @if ($students->count())
+        @if ($studentLista->count())
             <table class="min-w-full divide-y divide-y-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Contacts</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>
                         
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($students as $student)
+                    @foreach ($studentLista as $student)
                         <tr class="hover:bg-gray-50">
                             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                                <div class="relative h-10 w-10">                                    
+                                {{-- <div class="relative h-10 w-10">                                    
                                         <img class="h-full w-full rounded-full object-cover object-center"
                                             src="{{ $student->profile_photo_url }}" alt="" />                                   
                                     <span
                                         class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                                </div>
+                                </div> --}}
                                 <div class="text-sm">
                                     <div class="font-medium text-gray-700">{{ $student->name }}</div>
                                     <div class="text-gray-400">{{ $student->name }}</div>
@@ -42,21 +42,21 @@
                                     <div class="flex">
 
                                         <p class="text-sm text-gray-500 mr-auto">
-                                            <i class="fas fa-users"></i>
-                                            ({{ $student->email }})
+                                            <i class="fab fa-whatsapp mr-2"></i>
+                                            {{ $student->phone }}
                                         </p>
                                     </div>
-                                    <div class="text-gray-400">Alumnos Matriculados</div>
+                                    <div class="text-gray-400">Email:({{ $student->email }})</div>
                                 </div>
                             </td>
-                            
                             <td class="px-6 py-4">
-                                @switch($student->name)
+                               
+                                @switch($student->statusr)
                                     @case(1)
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
-                                            Borrador
+                                            PreInscrito
                                         </span>
                                     @break
 
@@ -64,7 +64,7 @@
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
-                                            Revision
+                                            Inscrito
                                         </span>
                                     @break
 
@@ -72,32 +72,44 @@
                                         <span
                                             class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600">
                                             <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
-                                            Publicado
+                                            Certificado
                                         </span>
                                     @break
 
                                     @default
                                 @endswitch
+                                
                             </td>
+                            
+                           
                             <td class="px-6 py-4">
-                                <div class="flex justify-end gap-4">
-                                    <a x-data="{ tooltip: 'Delete' }" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6"
-                                            x-tooltip="tooltip">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                                        </svg>
-                                    </a>
-                                    <a x-data="{ tooltip: 'Edite' }" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6"
-                                            x-tooltip="tooltip">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                                        </svg>
-                                    </a>
+                                @switch($student->statusr)
+                                @case(1)
+                                <div class="flex justify-end gap-4">                          
+                               
+                                        <i class="fas fa-user-shield text-blue-700 cursor-pointer" wire:click="inscribir({{ $student->id }})"> Inscribir</i>
+                                        <i class="fas fa-user-slash text-red-700 cursor-pointer" wire:click="revertir({{ $student->id }})"> Revertir</i>                                    
                                 </div>
+                                @break
+
+                                @case(2)
+                                <div class="flex justify-end gap-4">
+                                    <i class="fas fa-user-graduate text-green-700 cursor-pointer" wire:click="certificar({{ $student->id }})"> Certificar</i>
+                                    
+                                    <i class="fas fa-user-slash text-red-700 cursor-pointer" wire:click="revertir({{ $student->id }})"> Revertir</i>  
+                                </div>
+                                @break
+
+                                @case(3)
+                                <div class="flex justify-end gap-4">
+                                   <i class="fas fa-user-slash text-red-700 cursor-pointer" wire:click="revertir({{ $student->id }})"> Revertir</i>  
+                               
+                                </div>
+                                @break
+
+                                @default
+                            @endswitch
+                                
                             </td>
                         </tr>
                     @endforeach
@@ -111,8 +123,8 @@
 
         @endif
         <div class="px-6 py-4">
-            {{ $students->links() }}
+            {{ $studentLista->links() }}
         </div>
+      
     </x-table-responsive>
-
 </div>

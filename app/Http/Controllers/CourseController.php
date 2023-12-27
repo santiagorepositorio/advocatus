@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use BaconQrCode\Encoder\QrCode;
+use BaconQrCode\Renderer\Image\Png;
 
 class CourseController extends Controller
 {
@@ -71,12 +77,30 @@ class CourseController extends Controller
      
         return redirect()->route('courses.status', $course);
     }
+
  
 
     public function myCourses(){
         $courses = auth()->user()->courses_enrolled()->orderBy('course_user.created_at', 'desc')->paginate(12);
 
         return view('courses.my-courses', compact('courses'));
+    }
+
+    public function generateCertificate(Course $course)
+    {
+        
+      
+        
+
+        $user = auth()->user();
+        
+        
+        $courses = auth()->user()->courses_enrolled()
+        ->where('courses.id', $course->id)
+        ->first();
+       $pdf = Pdf::loadView('certificate', compact('user', 'courses'));
+        return $pdf->download('certificado.pdf');      
+
     }
 
     /**

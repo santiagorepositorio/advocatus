@@ -7,6 +7,7 @@ use App\Mail\ApprovedCourse;
 use App\Mail\ApprovedCourses;
 use App\Mail\RejectCourse;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -116,6 +117,20 @@ class CourseController extends Controller
         Mail::to($course->teacher->email)->send(new RejectCourse($course));
         return redirect()->route('admin.courses.index')->with('Curso Rechazado');
     }
+
+    public function courses_users()
+    {
+        return view('admin.courses.courses-user');
+    }
+
+    public function courses_users_register(Course $course)
+    {
+        $students = $course->users()->paginate(10);
+        return view('admin.courses.courses-user-register', compact('course', 'students'));
+        
+    }
+
+    
 
   
 

@@ -6,13 +6,10 @@
         
     @endif
     <div class="card">
-        <div class="card-header input-group mb-3">
-            <input type="text" wire:keydowm="limpiar_page" wire:model="search" class="form-control w-80" placeholder="Escribe un Nombre..." aria-label="Recipient's username" aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <a class="btn btn-primary" href="{{ route('admin.users.usersfull') }}" ><i class="fas fa-user-plus mr-2"></i>Agregar Empleado</a>
-            </div>
-          </div>
-        
+        <div class="card-header">
+            <input wire:keydowm="limpiar_page" wire:model="search" class="form-control w-100" placeholder="Escribe un Nombre..."></input>
+                        
+        </div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
@@ -20,6 +17,8 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -29,7 +28,17 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.users.edit', $user) }}">Edit</a></td>
+                            <td>{{ $user->phone }}</td>
+                            <td>
+                                @if ($user->status == 1)
+                                    <span class="badge badge-success">Nuevo</span>
+                                @elseif ($user->status == 2)
+                                    <span class="badge badge-primary">Regular</span>
+                                @elseif ($user->status == 3)
+                                    <span class="badge badge-danger">Inactivo</span>
+                                @endif
+                            </td>
+                            <td width="10px"><a class="btn btn-primary" href="{{ route('admin.customer.customers_edit', $user) }}">Edit</a></td>
                             
                         </tr>
                     @empty
