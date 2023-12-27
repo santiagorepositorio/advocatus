@@ -33,7 +33,7 @@ class CourseStatus extends Component
         ->get('statusr');
         $this->statusr = $result->isNotEmpty() ? $result[0]->statusr : null;
 
-     
+        //PARA OBTNER EL VALOR DE ESTATUS
 
 
         
