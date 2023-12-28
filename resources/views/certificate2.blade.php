@@ -7,25 +7,20 @@
 
     <style>
         body {
-            
-            background-position: center;
-
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            /* Agrega la imagen de fondo y ajusta las propiedades */
-            background-image: url('{{ $backgroundImage }}');
-            
+          
+            background-image: url('https://cba.ucb.edu.bo/wp-content/uploads/2020/06/Paola-Veronica-Roque-Mercado_resize.jpg'); /* URL de la imagen de fondo */
             background-size: cover;
+            background-position: center;
         }
         .certificate {
             width: 800px;
             margin: 0 auto;
-            border: 1px solid #ccc;
+           
             padding: 20px;
-            box-sizing: border-box;
-            background-color: white; /* Color de fondo del certificado */
-            opacity: 0.9; /* Opacidad para combinar con la imagen de fondo */
+          
         }
         .header {
             text-align: center;
@@ -71,24 +66,16 @@
     </style>
 
 </head>
-<body>
+<body style="background-image: data:image/png;base64,{{ base64_encode($qrcode) }}; background-size: cover;">
     <div class="certificate">
         <div class="header">
   
             <div class="title">CERTIFICADO</div>
             <div class="subtitle">Por la presente se certifica que:</div>
         </div>
-        <div class="visible-print text-center">
-            {!! QrCode::size(100)->generate(Request::url()); !!}
-            <p>Escanéame para volver a la página principal.</p>
-        </div>
-        <?php
-        $url = 'https://example.com'; // La URL o texto que deseas codificar en el QR
-$qrCode = '<img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->size(200)->generate($url)) . '">';
-echo $qrCode;
-        
-        ?>
-    
+       
+        <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
+
       
         <div class="info">
             <p><strong>Nombre:</strong> {{ $user->name }}</p>
@@ -103,3 +90,4 @@ echo $qrCode;
     </div>
 </body>
 </html>
+
