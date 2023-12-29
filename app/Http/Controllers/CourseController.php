@@ -97,24 +97,39 @@ class CourseController extends Controller
     {
         
 
+<<<<<<< HEAD
         $rutaImagen = Storage::url($course->image->url);
+=======
+       
+>>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
         $user = auth()->user();     
-        $courses = auth()->user()->courses_enrolled()
-        ->where('courses.id', $course->id)
-        ->first();
+        // $courses = auth()->user()->courses_enrolled()
+        // ->where('courses.id', $course->id)
+        // ->first();
+        $imagePath = public_path('storage/' . $course->image->url);
+        $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+       
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
 
+<<<<<<< HEAD
 
         $html = View::make('certificate')->with([
+=======
+        $html = View::make('certificate2')->with([
+>>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
             'qrcode' => $qrcode,
             'user' => $user,
-            'courses' => $courses,
-            'backgroundImage' => $rutaImagen,
-        ])->render();
+            'courses' => $course,
+            'imageData' => $imageData,
+        ])->render();    
 
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
         // Instancia Dompdf
-        $dompdf = new Dompdf();
+        $dompdf = new Dompdf();      
 
         // Carga el HTML generado con el código QR en Dompdf
         $dompdf->loadHtml($html);
@@ -127,6 +142,45 @@ class CourseController extends Controller
 
         // Opcional: Guarda el PDF en el servidor
         $dompdf->stream('certificado.pdf');
+           
+
+    }
+    public function generateCertificate3(Course $course)
+    {
+
+       
+        $user = auth()->user();     
+        $courses = auth()->user()->courses_enrolled()
+        ->where('courses.id', $course->id)
+        ->first();
+        $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
+
+        $imagePath = public_path('storage/' . $courses->image->url);
+        $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+       
+      // Datos para la vista si los necesitas
+      $data = [
+        'courses' => $courses,
+        'imageData' => $imageData,
+    ];
+
+
+    $dompdf = new Dompdf();
+
+    // Renderizar la vista con los datos
+    $html = View::make('certificate3', $data)->render();
+
+    // Cargar el HTML generado en Dompdf
+    $dompdf->loadHtml($html);
+
+    // Opcional: Establecer el tamaño del papel y la orientación
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Renderizar el PDF
+    $dompdf->render();
+
+    // Descargar el PDF generado
+    return $dompdf->stream('reporte_con_fondo.pdf');
            
 
     }

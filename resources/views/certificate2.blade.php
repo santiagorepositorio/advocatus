@@ -7,17 +7,19 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-          
-            background-image: url('https://cba.ucb.edu.bo/wp-content/uploads/2020/06/Paola-Veronica-Roque-Mercado_resize.jpg'); /* URL de la imagen de fondo */
-            background-size: cover;
-            background-position: center;
-        }
+        /* Establece la imagen de fondo */
+        background-image: url(data:image/png;base64,{{ $imageData }});
+        /* Ajusta la posición y tamaño de la imagen */
+        background-size: cover; /* O ajusta según tus necesidades */
+        background-position: center center; /* O ajusta según tus necesidades */
+        /* Evita que la imagen de fondo se imprima en el PDF */
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
         .certificate {
             width: 800px;
             margin: 0 auto;
+            
            
             padding: 20px;
           
@@ -66,8 +68,8 @@
     </style>
 
 </head>
-<body style="background-image: data:image/png;base64,{{ base64_encode($qrcode) }}; background-size: cover;">
-    <div class="certificate">
+<body>
+    <div class="certificate " >
         <div class="header">
   
             <div class="title">CERTIFICADO</div>
@@ -75,11 +77,12 @@
         </div>
        
         <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
-
       
+    
         <div class="info">
             <p><strong>Nombre:</strong> {{ $user->name }}</p>
             <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Email:</strong> {{ Storage::url($courses->image->url)}}</p>
             <!-- Otros datos que desees mostrar -->
             <p><strong>Curso:</strong> {{ $courses->title }}</p>
             <!-- Otros datos del curso -->
