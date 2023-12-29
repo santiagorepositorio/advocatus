@@ -14,6 +14,7 @@ use Dompdf\Options;
 
 use BaconQrCode\Renderer\Image\Png;
 use BaconQrCode\Writer;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use SimpleSoftwareIO\QrCode\Facades\QrCode as FacadesQrCode;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -94,21 +95,26 @@ class CourseController extends Controller
     public function generateCertificate(Course $course)
     {
 
-        $rutaImagen = storage_path('app/public/img/home/justicia.jpg');
+       
         $user = auth()->user();     
-        $courses = auth()->user()->courses_enrolled()
-        ->where('courses.id', $course->id)
-        ->first();
+        // $courses = auth()->user()->courses_enrolled()
+        // ->where('courses.id', $course->id)
+        // ->first();
+        $imagePath = public_path('storage/' . $course->image->url);
+        $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+       
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
-        $html = View::make('certificate')->with([
+
+        $html = View::make('certificate2')->with([
             'qrcode' => $qrcode,
             'user' => $user,
-            'courses' => $courses,
-            'backgroundImage' => $rutaImagen,
-        ])->render();
+            'courses' => $course,
+            'imageData' => $imageData,
+        ])->render();    
 
+        
         // Instancia Dompdf
-        $dompdf = new Dompdf();
+        $dompdf = new Dompdf();      
 
         // Carga el HTML generado con el código QR en Dompdf
         $dompdf->loadHtml($html);
@@ -121,6 +127,45 @@ class CourseController extends Controller
 
         // Opcional: Guarda el PDF en el servidor
         $dompdf->stream('certificado.pdf');
+           
+
+    }
+    public function generateCertificate3(Course $course)
+    {
+
+       
+        $user = auth()->user();     
+        $courses = auth()->user()->courses_enrolled()
+        ->where('courses.id', $course->id)
+        ->first();
+        $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
+
+        $imagePath = public_path('storage/' . $courses->image->url);
+        $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+       
+      // Datos para la vista si los necesitas
+      $data = [
+        'courses' => $courses,
+        'imageData' => $imageData,
+    ];
+
+
+    $dompdf = new Dompdf();
+
+    // Renderizar la vista con los datos
+    $html = View::make('certificate3', $data)->render();
+
+    // Cargar el HTML generado en Dompdf
+    $dompdf->loadHtml($html);
+
+    // Opcional: Establecer el tamaño del papel y la orientación
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Renderizar el PDF
+    $dompdf->render();
+
+    // Descargar el PDF generado
+    return $dompdf->stream('reporte_con_fondo.pdf');
            
 
     }
