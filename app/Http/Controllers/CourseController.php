@@ -97,11 +97,7 @@ class CourseController extends Controller
     {
         
 
-<<<<<<< HEAD
-        $rutaImagen = Storage::url($course->image->url);
-=======
        
->>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
         $user = auth()->user();     
         // $courses = auth()->user()->courses_enrolled()
         // ->where('courses.id', $course->id)
@@ -111,23 +107,15 @@ class CourseController extends Controller
        
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
 
-<<<<<<< HEAD
 
         $html = View::make('certificate')->with([
-=======
-        $html = View::make('certificate2')->with([
->>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,
             'imageData' => $imageData,
         ])->render();    
 
-<<<<<<< HEAD
        
-=======
-        
->>>>>>> a5c1b0c03550516f2ea6cc48e0a53031036f40b8
         // Instancia Dompdf
         $dompdf = new Dompdf();      
 
