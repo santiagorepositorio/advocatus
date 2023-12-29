@@ -79,12 +79,16 @@
             <div class="subtitle">Por la presente se certifica que:</div>
         </div>
         <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
-
+        <img src="data:image/png;base64,{{ base64_encode($backgroundImage) }}" >
+  <div style="background-image: url('{{ $backgroundImage }}');">
+        <!-- Contenido del certificado -->
+    </div>
 
       
         <div class="info">
             <p><strong>Nombre:</strong> {{ $user->name }}</p>
             <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Email:</strong> {{ $backgroundImage }}</p>
             <!-- Otros datos que desees mostrar -->
             <p><strong>Curso:</strong> {{ $courses->title }}</p>
             <!-- Otros datos del curso -->
@@ -93,5 +97,6 @@
 
 
     </div>
+  
 </body>
 </html>
