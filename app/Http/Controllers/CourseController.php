@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+
 use BaconQrCode\Renderer\Image\Png;
 use BaconQrCode\Writer;
 use Illuminate\Support\Facades\Storage;
@@ -94,6 +95,7 @@ class CourseController extends Controller
 
     public function generateCertificate(Course $course)
     {
+        
 
        
         $user = auth()->user();     
@@ -105,14 +107,15 @@ class CourseController extends Controller
        
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
 
-        $html = View::make('certificate2')->with([
+
+        $html = View::make('certificate')->with([
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,
             'imageData' => $imageData,
         ])->render();    
 
-        
+       
         // Instancia Dompdf
         $dompdf = new Dompdf();      
 

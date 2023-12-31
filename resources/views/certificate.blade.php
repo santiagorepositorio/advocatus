@@ -78,21 +78,14 @@
             <div class="title">CERTIFICADO</div>
             <div class="subtitle">Por la presente se certifica que:</div>
         </div>
-        <div class="visible-print text-center">
-            {!! QrCode::size(100)->generate(Request::url()); !!}
-            <p>Escanéame para volver a la página principal.</p>
-        </div>
-        <?php
-        $url = 'https://example.com'; // La URL o texto que deseas codificar en el QR
-$qrCode = '<img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->size(200)->generate($url)) . '">';
-echo $qrCode;
-        
-        ?>
-    
+        <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
+
+
       
         <div class="info">
             <p><strong>Nombre:</strong> {{ $user->name }}</p>
             <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Email:</strong> {{ $backgroundImage }}</p>
             <!-- Otros datos que desees mostrar -->
             <p><strong>Curso:</strong> {{ $courses->title }}</p>
             <!-- Otros datos del curso -->
@@ -101,5 +94,6 @@ echo $qrCode;
 
 
     </div>
+  
 </body>
 </html>
