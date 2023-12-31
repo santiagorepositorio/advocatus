@@ -124,10 +124,10 @@
                             </div>
                         </div></a>
                         @endif
-                        <div class="visible-print text-center">
+                        {{-- <div class="visible-print text-center">
                             {!! QrCode::size(100)->generate(Request::url()); !!}
                             <p>Escanéame para volver a la página principal.</p>
-                        </div>
+                        </div> --}}
                        
                     </div>
                 </div>
