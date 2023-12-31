@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/sobotred/public_html/advocatus-online.com/
-    - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp style.css $DEPLOYPATH
+    - export DEPLOY=/home/sobotred/public_html/advocatus-online.com/
+    - /bin/cp index.html $DEPLOY
+    - /bin/cp style.css $DEPLOY
