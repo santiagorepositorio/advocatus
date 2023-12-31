@@ -108,7 +108,7 @@ class CourseController extends Controller
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
 
 
-        $html = View::make('certificate')->with([
+        $html = View::make('certificate2')->with([
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,
