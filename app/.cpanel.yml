@@ -1,4 +1,6 @@
 ---
 deployment:
-  - export DEPLOYPATH=/home/sobotred/public_html/advocatus-online.com/
-  - /bin/rsync -a --exclude 'index.php' public/ $DEPLOYPATH
+  tasks:
+    - export DEPLOYPATH=/home/sobotred/public_html/advocatus-online.com/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp style.css $DEPLOYPATH
