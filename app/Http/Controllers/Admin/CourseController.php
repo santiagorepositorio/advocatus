@@ -92,9 +92,11 @@ class CourseController extends Controller
     public function approved(Course $course)
     {
         $this->authorize('revision', $course);
+
         if(!$course->lessons || !$course->goals || !$course->requirements || !$course->image){
             return back()->with('info', 'No se puede aprobar sin estar completo');
         }
+        
         $course->status =3;
         $course->save();
         Mail::to($course->teacher->email)->send(new ApprovedCourses($course));
