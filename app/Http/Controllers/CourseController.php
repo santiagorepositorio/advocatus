@@ -102,7 +102,7 @@ class CourseController extends Controller
         $imagePath = public_path('storage/' . $course->image->url);
         $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
        
-        $qrcode = QrCode::generate(env('APP_URL').'/certificate'.$course->slug.'/'.$user->id);
+        $qrcode = QrCode::generate(env('APP_URL').'certificate'.$course->slug.'/'.$user->id);
 
 
         $html = View::make('certificate')->with([
