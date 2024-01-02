@@ -97,7 +97,7 @@ class CourseController extends Controller
         }
         $course->status =3;
         $course->save();
-        Mail::to($course->teacher->email)->send(new ApprovedCourses($course));
+        //Mail::to($course->teacher->email)->send(new ApprovedCourses($course));
         //$mail = new ApprovedCourse($course);
        // Mail::to($course->teacher->email)->queue($mail);
         return redirect()->route('admin.courses.index')->with('info', 'El curso se publico con exito');
@@ -114,7 +114,7 @@ class CourseController extends Controller
         $course->observation()->create($request->all());
         $course->status = 1;
         $course->save();
-        Mail::to($course->teacher->email)->send(new RejectCourse($course));
+       // Mail::to($course->teacher->email)->send(new RejectCourse($course));
         return redirect()->route('admin.courses.index')->with('Curso Rechazado');
     }
 
