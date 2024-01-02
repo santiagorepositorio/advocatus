@@ -77,14 +77,20 @@
         </div>
        
         <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
+
+        <div style="background-color: black; display: inline-block; padding: 2px; border: 10px;">
+            <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR" style="border: 5px solid white; border-radius: 5px;">
+        </div>
+        <div style="position: absolute; bottom: 10px; right: 10px;">
+            <div style="background-color: black; display: inline-block; padding: 2px; border: 10px;">
+                <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR" style="border: 5px solid white; border-radius: 5px;">
+            </div>
+        </div>
       
-    
         <div class="info">
             <p><strong>Nombre:</strong> {{ $user->name }}</p>
-            <p><strong>Email:</strong> {{ $user->email }}</p>
-            <p><strong>Email:</strong> {{ Storage::url($courses->image->url)}}</p>
-            <!-- Otros datos que desees mostrar -->
-            <p><strong>Curso:</strong> {{ $courses->title }}</p>
+ 
+            <p>Por haber participado de Taller: <strong>Curso:</strong> {{ $courses->title }} con una carga de 50 horas.</p>
             <!-- Otros datos del curso -->
         </div>
         

@@ -105,7 +105,7 @@ class CourseController extends Controller
         $qrcode = QrCode::generate('Texto que quieres codificar en el QR');
 
 
-        $html = View::make('certificate2')->with([
+        $html = View::make('certificate3')->with([
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,
@@ -120,15 +120,19 @@ class CourseController extends Controller
         $dompdf->loadHtml($html);
 
         // Opcional: Establece el tamaño del papel, la orientación, etc.
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('letter', 'landscape');
 
         // Renderiza el PDF
         $dompdf->render();
 
         // Opcional: Guarda el PDF en el servidor
-        $dompdf->stream('certificado.pdf');
+        $dompdf->stream('certificado-' . $user->name . '.pdf');
            
 
+    }
+
+    public function certificateLink(Course $course, User $user){
+        return view('courseslink', compact('course', 'user'));
     }
 
 

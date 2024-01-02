@@ -63,5 +63,6 @@ Route::get('shopping-cart/checkout', ShoppingCartPayment::class)
     ->name('shopping-cart.checkout');
 
 Route::get('/certificate/{course}', [CourseController::class, 'generateCertificate'])->name('certificate');
+Route::get('/certificate/{course}/{user}', [CourseController::class, 'certificateLink'])->name('certificate.link');
 
 

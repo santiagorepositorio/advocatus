@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,66 +6,66 @@
 
     <style>
         body {
-            
-            background-position: center;
-
-            font-family: Arial, sans-serif;
+            /* Elimina los márgenes predeterminados */
             margin: 0;
-            padding: 20px;
-            /* Agrega la imagen de fondo y ajusta las propiedades */
-            background-image: url('{{ $backgroundImage }}');
-            
-            background-size: cover;
+            padding: 0;
+            /* Establece la imagen de fondo en la página completa */
+            background-image: url(data:image/png;base64,{{ $imageData }});
+            /* Ajusta la posición y tamaño de la imagen */
+            background-size: 100%; /* Ajusta la imagen al 120% del tamaño original */
+            background-position: center center;
+            /* Agrega márgenes para mantener la relación de aspecto */
+            margin-top: 0mm; /* Ajusta según sea necesario */
+            margin-bottom: 0mm; /* Ajusta según sea necesario */
+            margin-left: 0mm; /* Ajusta según sea necesario */
+            margin-right: 0mm; /* Ajusta según sea necesario */
+            /* Evita que la imagen de fondo se imprima en el PDF */
+            -webkit-print-color-adjust: exact;
+            color-adjust: exact;
+            font-family: 'Arial', sans-serif; /* Tipo de letra predeterminado */
         }
+
         .certificate {
             width: 800px;
             margin: 0 auto;
-            border: 1px solid #ccc;
             padding: 20px;
-            box-sizing: border-box;
-            background-color: white; /* Color de fondo del certificado */
-            opacity: 0.9; /* Opacidad para combinar con la imagen de fondo */
         }
+
         .header {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .title {
-            font-size: 36px;
+            font-size: 48px;
+            font-weight: bold;
             margin-bottom: 10px;
-            color: #333; /* Color del título */
+            color: #333;
         }
-        .subtitle {
-            font-size: 24px;
-            color: #666; /* Color del subtítulo */
-        }
-        .info {
+
+        .certificate-info {
+            font-size: 18px;
+            color: #2a2a2a;
+            text-align: center;
             margin-top: 30px;
-            color: #2a2a2a; /* Color de la información */
         }
-        .info p {
+
+        .certificate-info p {
             margin: 5px 0;
         }
+
+        /* Estilos para el código QR */
         .qr-code {
-            text-align: center;
-            margin-top: 20px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
         }
+
         .qr-code img {
-            width: 100px; /* Ajuste del tamaño del código QR */
+            width: 100px;
             height: 100px;
-        }
-        @page {
-            size: landscape; /* Formato horizontal */
-            margin: 20px; /* Márgenes cortos */
-        }
-          /* Estilos para el código QR */
-          .qr-code {
-            display: block;
-            text-align: center;
-        }
-        .qr-code img {
-            max-width: 100%;
-            height: auto;
+            border: 5px solid white;
+            border-radius: 5px;
         }
     </style>
 
@@ -74,26 +73,20 @@
 <body>
     <div class="certificate">
         <div class="header">
-  
             <div class="title">CERTIFICADO</div>
-            <div class="subtitle">Por la presente se certifica que:</div>
-        </div>
-        <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
-
-
-      
-        <div class="info">
-            <p><strong>Nombre:</strong> {{ $user->name }}</p>
-            <p><strong>Email:</strong> {{ $user->email }}</p>
-            <p><strong>Email:</strong> {{ $backgroundImage }}</p>
-            <!-- Otros datos que desees mostrar -->
-            <p><strong>Curso:</strong> {{ $courses->title }}</p>
-            <!-- Otros datos del curso -->
+            <div class="subtitle">Por la presente se certifica:</div>
         </div>
         
+        <div class="certificate-info">
+            <p><strong>Nombre:</strong> <span style="font-size: 24px;">{{ $user->name }}</span></p>
+            <p>Por haber participado de Curso/Taller: <strong> {{ $courses->title }}</strong> con una carga de 50 horas.</p>
+            <!-- Otros datos del curso -->
+        </div>
 
-
+        <!-- Código QR -->
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="Código QR">
+        </div>
     </div>
-  
 </body>
 </html>
