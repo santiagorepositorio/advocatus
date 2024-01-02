@@ -105,7 +105,7 @@ class CourseController extends Controller
         $qrcode = QrCode::generate(env('APP_URL').'/certificate'.$course->slug.'/'.$user->id);
 
 
-        $html = View::make('certificate3')->with([
+        $html = View::make('certificate')->with([
             'qrcode' => $qrcode,
             'user' => $user,
             'courses' => $course,
