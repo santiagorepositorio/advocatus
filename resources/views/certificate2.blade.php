@@ -7,7 +7,7 @@
 
     <style>
         body {
-        /* Establece la imagen de fondo */
+        /* Establece la imagen de fondo de todo*/
         background-image: url(data:image/png;base64,{{ $imageData }});
         /* Ajusta la posición y tamaño de la imagen */
         background-size: cover; /* O ajusta según tus necesidades */
