@@ -52,9 +52,7 @@
         @endisset
     </figure>
     <div>
-        <p class="mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis quos
-            consectetur dolor cupiditate provident numquam. Pariatur, quidem quasi. Animi eligendi dolor
-            numquam debitis, dolorem quia amet sed unde quibusdam </p>
+        <p class="mb-2">Debe subir una imagen de su Curso de lo contrario cargara una por defecto</p>
         {!! Form::file('file', ['class' => 'form-input w-full '.($errors->has('file') ? ' border-red-600' : ''), 'id' => 'file', 'accept' => 'image/*']) !!}
         @error('file')
         <strong class="text-xs text-red-500">{{ $message }}</strong>

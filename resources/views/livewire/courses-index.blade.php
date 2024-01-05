@@ -15,18 +15,12 @@
                 </button>
 
                 <div x-show="open" x-on:click.away="open = false"
-                    class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl">
+                    class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl z-auto">
                     @foreach ($categories as $category)
                     <a class=" cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white" wire:click="$set('category_id', {{ $category->id }})" x-on:click="open = false">
                         {{ $category->name }}
-                    </a>
-                    <div class="py-2">
-                        <hr>
-                        </hr>
-                    </div>
-                    @endforeach
-                    
-                   
+                    </a>                   
+                    @endforeach             
                 </div>
             </div>
 
@@ -45,10 +39,7 @@
                     <a class=" cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white" wire:click="$set('category_id', {{ $category->id }})" x-on:click="open = false">
                         {{ $level->name }}
                     </a>
-                    <div class="py-2">
-                        <hr>
-                        </hr>
-                    </div>
+                  
                     @endforeach
                 </div>
             </div>

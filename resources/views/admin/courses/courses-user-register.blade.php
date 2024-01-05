@@ -24,6 +24,7 @@
             
         </div>
     </section>
+                
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6">
         @if (session('info'))
         <div class="lg:col-span-3" x-data="{open: true}" x-show="open">
@@ -37,19 +38,37 @@
         </div>
             
         @endif
-        <div class="order-2 lg:col-span-3 lg:order-1">
+        <div class="order-2 lg:col-span-2 lg:order-1">
             <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
                 <div class="px-6 py-4">
                     <h1 class="font-bold text-2xl mb-2">Lista de Alumnos</h1>                    
                 
                 {{-- LISTA DE INSCRITOS --}}
-                @livewire('admin.courses-users-list', ['course' => $course], key('courses-'.$course->id))
-            
-            </div>
+                @livewire('admin.courses-users-list', ['course' => $course], key('courses-'.$course->id))            
+                </div>             
             </section>
-           
-            
+        </div>
+        <div class="order-1 lg:order-2">
+            <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
+                <div class="px-6 py-4">
+                    <div class="flex items-center mb-4">
+                        <img class="h-12 w-12 object-cover rounded-full shadow-lg"
+                            src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
+                        <div class="ml-4">
+                            <h1 class="font-bold text-gray-500 text-lg">Prof. {{ $course->teacher->name }}</h1>
+                            <a href=""
+                                class="text-blue-400 text-sm font-bold">{{ '@' . Str::slug($course->teacher->name, '') }}</a>
+                        </div>
+                    </div>
 
-        </div>       
+                    <div class="flex justify-center mb-4">                        
+                        <a class="btn btn-danger" href="{{ route('admin.courses.observation', $course) }}">Observar</a>
+
+                    </div>
+                   
+                </div>
+            </section>
+        </div>
+
     </div>
 </x-app-layout>

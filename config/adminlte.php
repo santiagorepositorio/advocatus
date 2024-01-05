@@ -132,7 +132,7 @@ return [
     'usermenu_enabled' => true,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
 
@@ -192,8 +192,8 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
-    'classes_sidebar_nav' => '',
+    'classes_sidebar' => 'sidebar-dark-danger elevation-4',
+    'classes_sidebar_nav' => 'nav-compact',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
@@ -306,11 +306,7 @@ return [
        //     'type' => 'sidebar-menu-search',
        //     'text' => 'Buscar',
       //  ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+
         [
             'text'        => 'Roles',
             'route'         => 'admin.roles.index',
@@ -320,7 +316,7 @@ return [
             'active'    => ['admin/roles*']
         ],
         [
-            'text'        => 'Users',
+            'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',
             'label_color' => 'danger',
@@ -328,22 +324,24 @@ return [
             'active'    => ['admin/users*']
         ],
         [
-            'text'        => 'Customer',
+            'text'        => 'Clientes',
             'route'         => 'admin.customers.index',
             'icon'        => 'fas fa-fw fa-users',
             'label_color' => 'danger',
             'can'   => 'Crear cursos',
             'active'    => ['admin/customers*']
         ],
-        ['header' => 'Configuraciones de Cursos'],
+        ['header' => 'Configuraciones'],
         [
-            'text'        => 'Category',
+            'text'        => 'Categorias',
             'route'         => 'admin.categories.index',
             'icon'        => 'fas fa-fw fa-cogs',
             'label_color' => 'danger',
             'can'   => 'Crear cursos',
             'active'    => ['admin/categories*']
         ],
+       
+        ['header' => 'Configuraciones de Cursos'],       
         [
             'text'    => 'Opciones de Cursos',
             'icon'    => 'fas fa-fw fa-share',
@@ -356,16 +354,9 @@ return [
                     'text' => 'Cursos Actuales',
                     'route'  => 'admin.courses.courses-users',
                 ],               
-                [
-                    'text' => 'Certificados',
-                    'url'  => '#',
-                ],
+             
             ],
-        ],
-
-
-
-        
+        ],       
         [
             'text'        => 'Chat WhatsApp',
             'url'         => 'admin/pages',

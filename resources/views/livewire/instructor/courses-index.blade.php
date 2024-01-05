@@ -3,17 +3,17 @@
 
         <div class="px-6 py-4 flex">
             <input wire:model="search" type="text" class="form-input flex-1 w-full rounded-lg shadow-sm"
-                placeholder="Ingrese un datopo">
+                placeholder="Ingrese un dato">
             <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear Curso</a>
         </div>
         @if ($courses->count())
             <table class="min-w-full divide-y divide-y-200">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Titulo</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Matriculados</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Calificacion</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">State</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Estado</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>
                 </thead>

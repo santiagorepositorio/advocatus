@@ -47,7 +47,6 @@
     </x-jet-authentication-card>
 </x-guest-layout> --}}
 <x-app-layout>
-    <!-- component -->
     <div class="py-6">
         <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
             <div class="hidden lg:block lg:w-1/2 bg-cover"
@@ -98,7 +97,6 @@
                         @endif
                     </div>
                     <div class="mt-8">
-                        {{-- <button class="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button> --}}
                         <x-jet-button
                             class="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
                             {{ __('Inciar Sesion') }}
@@ -186,14 +184,14 @@
                 </div>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/8"></span>
-                    <p class="text-center text-sm text-gray-600 mt-2">Si NO tienes una Cuenta? </p>
+                    <p class="text-center text-sm text-gray-600 mt-2">NO tienes una Cuenta? </p>
 
                     <span class="border-b w-1/5 md:w-1/8"></span>
                 </div>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/8"></span>
                     <a href="{{ route('register') }}"
-                        class="text-blue-600 text-center hover:text-blue-700 hover:underline" title="Sign In">Registrate</a>
+                        class="text-blue-600 text-center hover:text-blue-700 hover:underline" title="Clic para Regístrarte">Regístrate</a>
                     <span class="border-b w-1/5 md:w-1/8"></span>
                 </div>
                 

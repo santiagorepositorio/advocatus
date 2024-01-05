@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Admin\CoursesUsersList;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,6 @@ Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->nam
 
 Route::get('courses-users', [CourseController::class, 'courses_users'])->name('courses.courses-users');
 Route::get('courses-users/{course}', [CourseController::class, 'courses_users_register'])->name('courses.courses-users-register');
-
 
 
 

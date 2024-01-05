@@ -1,8 +1,8 @@
 @props(['course'])
 
-<article class="card flex flex-col p-1 transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+<article class="card flex flex-col p-1 transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl rounded-lg">
     @isset($course->image)
-    <img class="h-36 w-full object-cover rounded-md" src="{{ Storage::url($course->image->url) }}" alt="">
+    <img class="h-36 w-full object-cover rounded-lg" src="{{ Storage::url($course->image->url) }}" alt="">
     @else
     <img class="h-36 w-full object-cover" src="https://media.istockphoto.com/id/1146532466/es/foto/fondo-digital-azul-abstracto.jpg?s=2048x2048&w=is&k=20&c=Fa-z_DwZb-gz2FSD63efzRFlW3wxfUwpjFXR-gq2jzc=" alt="">       
     @endisset

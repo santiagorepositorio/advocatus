@@ -16,8 +16,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>
-                        
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Acciones</th>                        
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>
                 </thead>
