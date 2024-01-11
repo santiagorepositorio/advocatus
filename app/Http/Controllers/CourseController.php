@@ -169,4 +169,9 @@ class CourseController extends Controller
     {
         //
     }
+
+    public function privacy_policy(){
+        return view('privacy_policy');
+
+    }
 }
