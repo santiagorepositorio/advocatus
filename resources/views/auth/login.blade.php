@@ -55,8 +55,6 @@
             <div class="w-full p-8 lg:w-1/2">
                 <h2 class="text-2xl font-semibold text-gray-700 text-center">Advocatus Online</h2>
                 <p class="text-xl text-gray-600 text-center">Sean Bienvenidos!</p>
-
-
                 <x-jet-validation-errors class="mb-4" />
 
                 @if (session('status'))
@@ -69,8 +67,7 @@
                     @csrf
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                        <input id="email"
-                            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                        <input id="email" class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                             type="email" name="email">
                     </div>
                     <div class="mt-4">
@@ -113,7 +110,8 @@
                 </div>
 
                 <div class="mt-2 flex items-center justify-between gap-3">
-                    <a href="#" class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
+                    <a href="#"
+                        class="btn btn-block flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-100 hover:bg-gray-200 rounded">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326667 333333"
                             shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
                             image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd">
@@ -191,10 +189,11 @@
                 <div class="mt-4 flex items-center justify-between">
                     <span class="border-b w-1/5 md:w-1/8"></span>
                     <a href="{{ route('register') }}"
-                        class="text-blue-600 text-center hover:text-blue-700 hover:underline" title="Clic para Regístrarte">Regístrate</a>
+                        class="text-blue-600 text-center hover:text-blue-700 hover:underline"
+                        title="Clic para Regístrarte">Regístrate</a>
                     <span class="border-b w-1/5 md:w-1/8"></span>
                 </div>
-                
+
             </div>
         </div>
     </div>

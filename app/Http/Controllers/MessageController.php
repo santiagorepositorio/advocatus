@@ -114,7 +114,7 @@ class MessageController extends Controller
                 }
                 $messages[$key] = $message;
             }
-
+            
             return response()->json([
                 'success' => true,
                 'data' => $messages,
@@ -428,5 +428,27 @@ class MessageController extends Controller
         $wam->save();
 
         return $wam;
+    }
+
+    public function getUsers(): JsonResponse
+    {
+        try {
+            // Consulta para obtener los campos 'name' y 'phone' de la tabla 'users'
+            $users = DB::table('users')
+                ->select('name', 'phone')
+                ->get();
+
+            // Retornar la respuesta en formato JSON con los usuarios
+            return response()->json([
+                'success' => true,
+                'data' => $users,
+            ], 200);
+        } catch (Exception $e) {
+            // Manejar excepciones y retornar una respuesta de error en formato JSON
+            return response()->json([
+                'success' => false,
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
