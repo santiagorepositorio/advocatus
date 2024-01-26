@@ -166,23 +166,7 @@ class MessageController extends Controller
 
     public function sendMessages(): JsonResponse
     {
-        try {
-            // $token = env('WHATSAPP_API_TOKEN');
-            // $phoneId = env('WHATSAPPI_API_PHONE_ID');
-            // $version = 'v15.0';
-            // $payload = [
-            //     'messaging_product' => 'whatsapp',
-            //     'to' => '14842918777',
-            //     'type' => 'template',
-            //     "template" => [
-            //         "name" => "hello_world",
-            //         "language" => [
-            //             "code" => "en_US"
-            //         ]
-            //     ]
-            // ];
-
-            // $message = Http::withToken($token)->post('https://graph.facebook.com/' . $version . '/' . $phoneId . '/messages', $payload)->throw()->json();
+        try {        
 
             $wp = new Whatsapp();
             $message = $wp->sendText('59177778837', 'Is this working?');
@@ -209,7 +193,7 @@ class MessageController extends Controller
             $token = $query['hub_verify_token'];
             $challenge = $query['hub_challenge'];
 
-            if ($mode && $token) {
+            if ($mode && $token) {                            
                 if ($mode === 'subscribe' && $token == $verifyToken) {
                     return response($challenge, 200)->header('Content-Type', 'text/plain');
                 }

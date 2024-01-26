@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Advocatus Online')
+@section('title', 'Advocatus Online Inscritos')
 
 @section('content_header')
-    <h1>Cursos Actuales</h1>
+    <h1>Cursos de Inscritos</h1>
 @stop
 
 @section('content')
@@ -13,6 +13,7 @@
         </div>
     @endif --}}
     @livewire('admin.courses-users')
+
 @stop
 
 @section('css')
