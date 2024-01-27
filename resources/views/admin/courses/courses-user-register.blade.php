@@ -43,40 +43,6 @@
                                 d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
                         </svg>
                     </span>
-<<<<<<< HEAD
-                </div>
-            </div>
-        @endif
-        <div class="order-2 lg:col-span-2 lg:order-1">
-            <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
-                <div class="px-6 py-4">
-                    <h1 class="font-bold text-2xl mb-2">Lista de Alumnos</h1>
-
-                    {{-- LISTA DE INSCRITOS --}}
-                    @livewire('admin.courses-users-list', ['course' => $course], key('courses-' . $course->id))
-                </div>
-            </section>
-        </div>
-        <div class="order-1 lg:order-2">
-            <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
-                <div class="px-6 py-4">
-                    <div class="flex items-center mb-4">
-                        <img class="h-12 w-12 object-cover rounded-full shadow-lg"
-                            src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
-                        <div class="ml-4">
-                            <h1 class="font-bold text-gray-500 text-lg">Prof. {{ $course->teacher->name }}</h1>
-                            <a href=""
-                                class="text-blue-400 text-sm font-bold">{{ '@' . Str::slug($course->teacher->name, '') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-center mb-4">
-                        <a class="btn btn-danger" href="{{ route('admin.courses.observation', $course) }}">Observar</a>
-
-                    </div>
-
-=======
->>>>>>> 6b61a639f4f697eb778f126c24dd18131e5bfc8d
                 </div>
             </div>
         @endif
