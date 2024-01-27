@@ -78,8 +78,8 @@
                                             <div class="card-body">
                                                 <h1 class="text-2xl font-bold">Certificado y Link de Grupo</h1>
                                                 <hr class="mt-2 mb-6">
-                                                {!! Form::open(['route' => 'instructor.courses.store', 'autocomplete' => 'off', 'files' => true]) !!}
-                                                {!! Form::hidden('user_id', auth()->user()->id) !!}
+                                                {!! Form::open(['route' => 'admin.course.certificate.store', 'autocomplete' => 'off', 'files' => true]) !!}
+                                                {!! Form::hidden('course_id', $course->id) !!}
                                                     @include('admin.courses.partials.form')
                                                     <div class="flex justify-end">
                                                         {!! Form::submit('Registrar Informacion', ['class' => ' btn btn-primary']) !!}
@@ -96,8 +96,14 @@
                                 </div>
                             </div>
                             <div x-show="activeTab===2">
-                                <h1 class="text-center text-3xl text-gray-600">ULTIMOS PRODUCTOS</h1>
-                                <p class="text-center text-gray-500 text-sm mb-6"></p>
+                                <h2 class="text-center text-3xl text-gray-600">Link</h2>
+                                <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->link}}</p>
+                                <h2 class="text-center text-3xl text-gray-600">Descripcion</h2>
+                                <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->description}}</p>
+                                <h2 class="text-center text-3xl text-gray-600">PLANTILLA de Certificado</h2>
+                                @isset($course->certificate->image)
+                                <img name="picture" id="picture" class="w-full h-full object-cover object-center" src="{{ Storage::url($course->certificate->image->url) }}"> 
+                                @endisset
                             </div>
                         </div>
         

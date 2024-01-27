@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PriceSeeder::class);
         $this->call(PlatformSeeder::class);
         $this->call(CourseSeeder::class);
+        $this->call(CertificateSeeder::class);
         $this->call(ProfileSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(PostSeeder::class);

@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Mail\ApprovedCourse;
 use App\Mail\ApprovedCourses;
 use App\Mail\RejectCourse;
+use App\Models\Certificate;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -41,7 +43,23 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'link' => 'required',            
+            'description' => 'required',
+            'course_id' => 'required',           
+            'file' => 'image',
+            
+        ]);
+        //return $request->all();
+       $certificate = Certificate::create($request->all());
+       
+       if($request->file('file')){
+           $url = Storage::put('courses', $request->file('file'));
+           $certificate->image()->create([
+                'url' => $url
+           ]);
+        }
+        return redirect()->route('admin.courses.courses-users');
     }
 
     /**
@@ -128,7 +146,8 @@ class CourseController extends Controller
     public function courses_users_register(Course $course)
     {
         $students = $course->users()->paginate(10);
-        return view('admin.courses.courses-user-register', compact('course', 'students'));
+        $certificates = $course->certificate();
+        return view('admin.courses.courses-user-register', compact('course', 'students', 'certificates'));
         
     }
 

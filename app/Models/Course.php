@@ -51,6 +51,11 @@ class Course extends Model
     {
         return $this->hasOne('App\Models\Observation');
     }
+
+    public function certificate()
+    {
+        return $this->hasOne('App\Models\Certificate');
+    }
      //Relacion uno a muchos
 
      public function reviews(){

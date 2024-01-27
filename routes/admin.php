@@ -33,6 +33,8 @@ Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->nam
 Route::get('courses-users', [CourseController::class, 'courses_users'])->name('courses.courses-users');
 Route::get('courses-users/{course}', [CourseController::class, 'courses_users_register'])->name('courses.courses-users-register');
 
+Route::post('courses/store', [CourseController::class, 'store'])->name('course.certificate.store');
+
 
 
 

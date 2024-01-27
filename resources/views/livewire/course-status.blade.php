@@ -79,7 +79,8 @@
                                     Pre Inscrito
                                 </div>
                             </div>
-                            <a href="https://chat.whatsapp.com/HF0p7xDqVc64Fsy3jZpKUN">
+                            {{-- <a href="https://chat.whatsapp.com/HF0p7xDqVc64Fsy3jZpKUN"> --}}
+                            <a href="{{ $course->certificate->link }}">
                             <div class="inline-flex items-center cursor-pointer pointer-events-auto relative rounded-md bg-green-500 text-[0.8125rem] font-medium leading-5 text-white shadow-sm ring-1  hover:bg-slate-50 hover:text-slate-900 fill-white hover:fill-slate-900">
                                 <div class="flex px-3 py-2 gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " fill="currentColor" viewBox="0 0 24 24">
@@ -99,6 +100,7 @@
                                 INSCRITO
                             </div>
                         </div>
+                        <a href="{{ $course->certificate->link }}">
                         <div class="inline-flex items-center cursor-pointer pointer-events-auto relative rounded-md bg-green-500 text-[0.8125rem] font-medium leading-5 text-white shadow-sm ring-1  hover:bg-slate-50 hover:text-slate-900 fill-white hover:fill-slate-900">
                             <div class="flex px-3 py-2 gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " fill="currentColor" viewBox="0 0 24 24">
@@ -107,6 +109,7 @@
                                 Unirse al Grupo
                             </div>
                         </div>
+                    </a>
                         @elseif($statusr == 3)
                         <div class="pointer-events-auto relative inline-flex items-center rounded-md bg-cyan-400 text-[0.8125rem] font-medium leading-5 text-white shadow-sm ring-1  hover:bg-slate-50 hover:text-slate-900 fill-white hover:fill-slate-900">
                             <div class="flex px-3 py-2 gap-2">
