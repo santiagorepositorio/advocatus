@@ -64,8 +64,9 @@
             <div class="px-6 py-4">
 
                 <h1 class="text-2xl leading-8 text-center mb-4"><a href="{{ route('courses.show', $course) }}"
-                        class=" cursor-pointer">{{ $course->title }}</a></h1>
+                        class=" cursor-pointer">{{ $course->title }}</h1>
                 <div class="flex items-center mb-4">
+
                     
                     
                     <div class="flex justify-around items-center gap-3">
