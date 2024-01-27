@@ -43,6 +43,7 @@
                                 d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
                         </svg>
                     </span>
+<<<<<<< HEAD
                 </div>
             </div>
         @endif
@@ -74,7 +75,91 @@
 
                     </div>
 
+=======
+>>>>>>> 6b61a639f4f697eb778f126c24dd18131e5bfc8d
                 </div>
+            </div>
+        @endif
+        <div class="order-2 lg:col-span-3 lg:order-1">
+
+            <!-- Paletas de Ultimos -->
+            <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
+        
+                <div class="flex justify-center items-center">
+                    <!--actual component start-->
+                    <div x-data="setup()" class="w-full">
+                        <ul class="flex justify-center items-center my-4">
+                            <template x-for="(tab, index) in tabs" :key="index">
+                                <li class="cursor-pointer py-2 px-4 text-gray-500 lg:border-b-8 lg:mb-0"
+                                    :class="activeTab === index ? 'text-blue-500 border-blue-500' : ''"
+                                    @click="activeTab = index" x-text="tab"></li>
+                            </template>
+                        </ul>
+        
+                        <div class="h-auto w-auto text-center mx-auto ">
+                            <div x-show="activeTab===0">
+                                <div class="px-6 py-4">
+                                    <h1 class="font-bold text-2xl mb-2">Lista de Alumnos</h1>
+        
+                                    {{-- LISTA DE INSCRITOS --}}
+                                    @livewire('admin.courses-users-list', ['course' => $course], key('courses-' . $course->id))
+                                </div>
+                            </div>
+                            <div x-show="activeTab===1">                               
+                                <div class="flex justify-center mt-2">
+                                    <div class="container py-2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h1 class="text-2xl font-bold">Certificado y Link de Grupo</h1>
+                                                <hr class="mt-2 mb-6">
+                                                {!! Form::open(['route' => 'instructor.courses.store', 'autocomplete' => 'off', 'files' => true]) !!}
+                                                {!! Form::hidden('user_id', auth()->user()->id) !!}
+                                                    @include('admin.courses.partials.form')
+                                                    <div class="flex justify-end">
+                                                        {!! Form::submit('Registrar Informacion', ['class' => ' btn btn-primary']) !!}
+                                                    </div>
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                
+                                    </div>
+                                    <x-slot name="js">
+                                        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+                                        <script src="{{ asset('js/instructor/courses/form.js') }}"></script>
+                                    </x-slot>
+                                </div>
+                            </div>
+                            <div x-show="activeTab===2">
+                                <h1 class="text-center text-3xl text-gray-600">ULTIMOS PRODUCTOS</h1>
+                                <p class="text-center text-gray-500 text-sm mb-6"></p>
+                            </div>
+                        </div>
+        
+                        <ul class="flex justify-center items-center my-4">
+                            <template x-for="(tab, index) in tabs" :key="index">
+                                <li class="cursor-pointer py-3 px-4 rounded transition lg:mb-0"
+                                    :class="activeTab === index ? 'bg-blue-500 text-white' : ' text-gray-500'"
+                                    @click="activeTab = index" x-text="tab"></li>
+                            </template>
+                        </ul>
+        
+                    </div>
+                    <!--actual component end-->
+                </div>
+        
+                <script>
+                    function setup() {
+                        return {
+                            activeTab: 0,
+                            tabs: [
+                                "ADMINISTRAR",
+                                "CERTIFICADO",
+                                "GRUPO WHATSAPP",
+                            ]
+                        };
+                    };
+                </script>
+        
             </section>
         </div>
 

@@ -27,4 +27,7 @@ Route::apiResources([
 ]);
 Route::get('/message-templates', [MessageController::class, 'loadMessageTemplates']);
 Route::post('/send-message-templates', [MessageController::class, 'sendMessageTemplate']);
+Route::get('/get-users', [MessageController::class, 'getUsers']);
+
+
 

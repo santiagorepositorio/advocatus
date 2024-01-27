@@ -114,7 +114,7 @@ class MessageController extends Controller
                 }
                 $messages[$key] = $message;
             }
-
+            
             return response()->json([
                 'success' => true,
                 'data' => $messages,
@@ -166,23 +166,7 @@ class MessageController extends Controller
 
     public function sendMessages(): JsonResponse
     {
-        try {
-            // $token = env('WHATSAPP_API_TOKEN');
-            // $phoneId = env('WHATSAPPI_API_PHONE_ID');
-            // $version = 'v15.0';
-            // $payload = [
-            //     'messaging_product' => 'whatsapp',
-            //     'to' => '14842918777',
-            //     'type' => 'template',
-            //     "template" => [
-            //         "name" => "hello_world",
-            //         "language" => [
-            //             "code" => "en_US"
-            //         ]
-            //     ]
-            // ];
-
-            // $message = Http::withToken($token)->post('https://graph.facebook.com/' . $version . '/' . $phoneId . '/messages', $payload)->throw()->json();
+        try {        
 
             $wp = new Whatsapp();
             $message = $wp->sendText('59177778837', 'Is this working?');
@@ -209,7 +193,7 @@ class MessageController extends Controller
             $token = $query['hub_verify_token'];
             $challenge = $query['hub_challenge'];
 
-            if ($mode && $token) {
+            if ($mode && $token) {                            
                 if ($mode === 'subscribe' && $token == $verifyToken) {
                     return response($challenge, 200)->header('Content-Type', 'text/plain');
                 }
@@ -428,5 +412,27 @@ class MessageController extends Controller
         $wam->save();
 
         return $wam;
+    }
+
+    public function getUsers(): JsonResponse
+    {
+        try {
+            // Consulta para obtener los campos 'name' y 'phone' de la tabla 'users'
+            $users = DB::table('users')
+                ->select('name', 'phone')
+                ->get();
+
+            // Retornar la respuesta en formato JSON con los usuarios
+            return response()->json([
+                'success' => true,
+                'data' => $users,
+            ], 200);
+        } catch (Exception $e) {
+            // Manejar excepciones y retornar una respuesta de error en formato JSON
+            return response()->json([
+                'success' => false,
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

@@ -36,6 +36,7 @@ use PHPUnit\Framework\MockObject\Stub\ReturnSelf;
 // });
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/privacy-policy', [CourseController::class, 'privacy_policy'])->name('privacy-policy');
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');

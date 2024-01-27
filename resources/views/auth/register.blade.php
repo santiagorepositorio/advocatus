@@ -94,9 +94,17 @@
                     </div>
                     <div class="mt-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">No de Celular</label>
-                        <input id="phone"
+                        {{-- <input id="phone"
                             class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                            type="phone" name="phone">
+                            type="phone" name="phone"> --}}                      
+                           
+
+                            <input id="phone"
+                            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                            type="tel" 
+                            name="phone" 
+                            placeholder="Escriba su numero +591-XXXXXXXX"
+                            oninput="this.value = '591' + this.value.replace(/[^0-9]/g, '').slice(3, 11)">
                     </div>
 
                     <div class="flex flex-col my-4">
