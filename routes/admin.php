@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WhatsappController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Admin\CoursesUsersList;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('', [HomeController::class, 'index'])->middleware('can:ver dashboard')->name('home');
@@ -34,6 +36,9 @@ Route::get('courses-users', [CourseController::class, 'courses_users'])->name('c
 Route::get('courses-users/{course}', [CourseController::class, 'courses_users_register'])->name('courses.courses-users-register');
 
 Route::post('courses/store', [CourseController::class, 'store'])->name('course.certificate.store');
+
+
+Route::get('messages', [WhatsappController::class, 'index'])->name('messages.index');
 
 
 

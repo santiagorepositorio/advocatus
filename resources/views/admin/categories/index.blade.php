@@ -8,10 +8,9 @@
 
 @section('content')
     @if (session('info'))
-    <div class="alert alert-primary" role="alert">
-        <strong>Exito!</strong> {{ session('info') }}
-    </div>
-        
+        <div class="alert alert-primary" role="alert">
+            <strong>Exito!</strong> {{ session('info') }}
+        </div>
     @endif
     <div class="card">
         <div class="card-header">
@@ -35,13 +34,14 @@
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->slug }}</td>
                             <td>{{ $category->status }}</td>
-                            <td width="10px"><a class="btn btn-secondary" href="{{ route('admin.categories.edit', $category) }}">Edit</a></td>
+                            <td width="10px"><a class="btn btn-secondary"
+                                    href="{{ route('admin.categories.edit', $category) }}">Edit</a></td>
                             <td width="10px">
-                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">                                 
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger" type="submit">Eliminar</button>
-                                    
+
                                 </form>
                             </td>
                         </tr>
@@ -67,3 +67,6 @@
         console.log('Hi!');
     </script>
 @stop
+
+
+

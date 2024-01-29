@@ -359,7 +359,7 @@ return [
         ],       
         [
             'text'        => 'Chat WhatsApp',
-            'url'         => 'admin/pages',
+            'url'         => 'admin/messages',
             'icon'        => 'fab fa-whatsapp',
             'label'       => 4,
             'label_color' => 'success',
