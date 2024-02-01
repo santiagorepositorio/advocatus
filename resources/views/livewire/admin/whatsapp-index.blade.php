@@ -116,14 +116,14 @@
                     @foreach ($bodyMessage as $body)
                         <div class="flex {{ $body->outgoing == 1 ? 'justify-end' : '' }} mb-2">
 
-                            <div class="rounded px-3 py-2 {{ $body->outgoing == 0 ? 'bg-green-100' : 'bg-gray-200' }}">
+                            <div class="rounded px-3 py-2 {{ $body->outgoing == 1 ? 'bg-green-100' : 'bg-gray-200' }}">
                                
                                 <p class="text-sm">
                                     {{ $body->body }}
                                 </p>
 
                                 <p
-                                    class="{{ $body->outgoing == 0 ? 'text-right' : '' }} text-xs text-gray-600 mt-1">
+                                    class="{{ $body->outgoing == 1 ? 'text-right' : '' }} text-xs text-gray-600 mt-1">
                                     {{ $body->created_at->format('d-m-y h:i A') }}
 
                                     {{-- @if ($body->wa_id == auth()->id())
@@ -139,9 +139,9 @@
                     <span id="final"></span>
 
                 </div>
-                <form class="bg-gray-100 h-16 flex items-center px-4">
+                <form class="bg-gray-100 h-16 flex items-center px-4" wire:submit.prevent="sendMessage()">
 
-                    <x-jet-input type="text" class="flex-1" placeholder="Escriba un mensaje aquí" />
+                    <x-jet-input wire:model="bodySend" type="text" class="flex-1" placeholder="Escriba un mensaje aquí" />
 
                     <button class="flex-shrink-0 ml-4 text-2xl text-gray-700">
                         <i class="fas fa-share"></i>

@@ -13,7 +13,7 @@ class WhatsappIndex extends Component
 
     public $contactChat, $chat, $chat_id;
 
-    public $bodyMessage;
+    public $bodyMessage, $bodySend;
 
     public $users;
 
@@ -54,7 +54,7 @@ class WhatsappIndex extends Component
     }
     public function sendMessage(){
         $this->validate([
-            'bodyMessage' => 'required',
+            'bodySend' => 'required',
             'wa_id' => ['required', 'max:20'],
             'body' => ['required', 'string'],
         ]);
@@ -62,7 +62,7 @@ class WhatsappIndex extends Component
 
         
         $wp = new Whatsapp();
-        $response = $wp->sendText($this->contactChat->wa_id, $this->bodyMessage);
+        $response = $wp->sendText($this->contactChat->wa_id, $this->bodySend);
 
         $message = new Message();
         $message->wa_id = $this->contactChat->wa_id;
@@ -74,7 +74,7 @@ class WhatsappIndex extends Component
         $message->caption = '';
         $message->data = '';
         $message->save();
-        $this->reset('bodyMessage', 'contactChat');
+        $this->reset('bodySend', 'contactChat');
     }
     public function render()
     {
