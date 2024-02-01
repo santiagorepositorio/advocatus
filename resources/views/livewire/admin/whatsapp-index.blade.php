@@ -114,7 +114,7 @@
                     {{-- El contenido de nuestro chat --}}
              
                     @foreach ($bodyMessage as $body)
-                        <div class="flex {{ $body->outgoing == 0 ? 'justify-end' : '' }} mb-2">
+                        <div class="flex {{ $body->outgoing == 1 ? 'justify-end' : '' }} mb-2">
 
                             <div class="rounded px-3 py-2 {{ $body->outgoing == 0 ? 'bg-green-100' : 'bg-gray-200' }}">
                                
