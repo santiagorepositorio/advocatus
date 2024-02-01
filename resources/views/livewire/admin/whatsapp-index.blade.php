@@ -141,7 +141,7 @@
                 </div>
                 <form class="bg-gray-100 h-16 flex items-center px-4" wire:submit.prevent="sendMessage()">
 
-                    <x-jet-input wire:model="bodySend" type="text" class="flex-1" placeholder="Escriba un mensaje aquí" />
+                    <x-jet-input wire:model="bodySend" type="text" class="flex-1" placeholder="Escriba un mensaje" />
 
                     <button class="flex-shrink-0 ml-4 text-2xl text-gray-700">
                         <i class="fas fa-share"></i>
