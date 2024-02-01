@@ -83,6 +83,10 @@ public function profile(){
 public function courses_dictated(){
     return $this->hasMany('App\Models\Course');
 }
+//MESSAGES
+public function messages(){
+    return $this->hasMany('App\Models\Message', 'phone', 'user_phone');
+}
 
 public function reviews(){
     return $this->hasMany('App\Models\Review');

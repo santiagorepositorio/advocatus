@@ -23,7 +23,10 @@ return new class extends Migration
             $table->string('status', 15);
             $table->longText('caption')->nullable();
             $table->binary('data');
+            $table->string('user_phone')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_phone')->references('phone')->on('users');
         });
     }
 

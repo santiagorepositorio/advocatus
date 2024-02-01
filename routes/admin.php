@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WhatsappController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Admin\CoursesUsersList;
+use App\Http\Livewire\Admin\WhatsappIndex;
 use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,10 @@ Route::post('courses/store', [CourseController::class, 'store'])->name('course.c
 
 
 Route::get('messages', [WhatsappController::class, 'index'])->name('messages.index');
+
+Route::get('/whatsapp', WhatsappIndex::class)
+    ->middleware('auth')
+    ->name('whatsapp.index');
 
 
 
