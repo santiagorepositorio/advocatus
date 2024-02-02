@@ -1,0 +1,17 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-e99beb8b.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/commom.css": {
+    "file": "assets/commom-06c56df6.css",
+    "isEntry": true,
+    "src": "resources/css/commom.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-b845a0b8.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
