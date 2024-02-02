@@ -56,7 +56,7 @@ class WhatsappIndex extends Component
 
 
         $this->validate([            
-            'wa_id' => ['required', 'max:20'],
+
             'bodySend' => ['required', 'string'],
         ]);     
         $wp = new Whatsapp();
