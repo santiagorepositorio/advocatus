@@ -13,7 +13,6 @@ class Webhook implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
-
     public $change;
 
     /**

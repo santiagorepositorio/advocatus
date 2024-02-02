@@ -126,10 +126,11 @@
                                     class="{{ $body->outgoing == 1 ? 'text-right' : '' }} text-xs text-gray-600 mt-1">
                                     {{ $body->created_at->format('d-m-y h:i A') }}
 
-                                    {{-- @if ($body->wa_id == auth()->id())
-                                        <i
-                                            class="fas fa-check-double ml-2 {{ $body->is_read ? 'text-blue-500' : 'text-gray-600' }}"></i>
-                                    @endif --}}
+                                    @if ($body->outgoing == 1)
+                                        <i class="fas fa-check-double ml-2 {{ $body->status == 'read' ? 'text-blue-500' : 'text-gray-600' }}"></i>
+                                        @else
+                                        <i class="fas fa-check-double ml-2 {{ $body->status == 'read' ? 'text-blue-500' : 'text-gray-600' }}"></i>
+                                    @endif
                                 </p>
                             </div>
 

@@ -17,6 +17,14 @@ class WhatsappIndex extends Component
 
     public $users;
 
+    public function getListeners()
+    {
+        $user_id = auth()->user()->id;
+        return [
+            "echo-private:webhooks.{$user_id},OrderShipped" => 'render',
+        ];
+    }
+
 
 
     public function getContactsProperty()
