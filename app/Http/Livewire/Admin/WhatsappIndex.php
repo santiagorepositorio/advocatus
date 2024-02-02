@@ -53,23 +53,20 @@ class WhatsappIndex extends Component
         }
     }
     public function sendMessage(){
-        $this->validate([
-            'bodySend' => 'required',
-            'wa_id' => ['required', 'max:20'],
-            'body' => ['required', 'string'],
-        ]);
-   
 
-        
+
+        $this->validate([            
+            'wa_id' => ['required', 'max:20'],
+            'bodySend' => ['required', 'string'],
+        ]);     
         $wp = new Whatsapp();
         $response = $wp->sendText($this->contactChat->wa_id, $this->bodySend);
-
         $message = new Message();
         $message->wa_id = $this->contactChat->wa_id;
         $message->wam_id = $response['messages'][0]['id'];
         $message->type = 'text';
         $message->outgoing = true;
-        $message->body = $this->bodyMessage;
+        $message->body = $this->bodySend;
         $message->status = 'sent';
         $message->caption = '';
         $message->data = '';
