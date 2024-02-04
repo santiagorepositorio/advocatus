@@ -91,24 +91,8 @@
                             @else
                                 {{ $contactChat->user->name }}
                             @endif
-
                         </p>
-
-                        {{-- @if ($this->active)
-                        
-                        <p class="text-green-500 text-xs" x-show="chat_id != typingChatId" wire:key="online">
-                            Online
-                        </p>
-
-                    @else
-
-                        <p class="text-red-600 text-xs" x-show="chat_id != typingChatId" wire:key="offline">
-                            Offline
-                        </p>
-
-                    @endif --}}
                     </div>
-
                 </div>
                 <div class="h-[calc(100vh-11rem)] px-3 py-2 overflow-auto">
                     {{-- El contenido de nuestro chat --}}

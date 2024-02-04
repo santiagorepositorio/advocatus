@@ -63,46 +63,54 @@ class CourseController extends Controller
     public function show(Course $course)
     {   // funcion que evita ver cursos no publicados
         $this->authorize('published', $course);
-        
-                $similares = Course::where('category_id' , $course->category_id)
-                            ->where('id', '!=', $course->id)
-                            ->where('status', 3)
-                            ->latest('id')
-                            ->take(5)
-                            ->get();
 
-             
+        $similares = Course::where('category_id', $course->category_id)
+            ->where('id', '!=', $course->id)
+            ->where('status', 3)
+            ->latest('id')
+            ->take(5)
+            ->get();
 
-               
+
+
+
         return view('courses.show', compact('course', 'similares'));
-        
     }
 
     public function enrolled(Course $course)
     {
         $course->students()->attach(auth()->user()->id);
-     
+
         return redirect()->route('courses.status', $course);
     }
 
- 
 
-    public function myCourses(){
+
+    public function myCourses()
+    {
         $courses = auth()->user()->courses_enrolled()->orderBy('course_user.created_at', 'desc')->paginate(12);
 
         return view('courses.my-courses', compact('courses'));
     }
 
     public function generateCertificate(Course $course)
-    {   
-        $user = auth()->user();     
+    {
+        $user = auth()->user();
         // $courses = auth()->user()->courses_enrolled()
         // ->where('courses.id', $course->id)
         // ->first();
-        $imagePath = public_path('storage/' . $course->certificate->image->url);
-        $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
-       
-        $qrcode = QrCode::generate(env('APP_URL').'certificate/'.$course->slug.'/'.$user->id);
+        // $imagePath = public_path('storage/' . $course->certificate->image->url);
+        // $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+        if ($course->certificate->image->url ?? false) {
+            $imagePath = public_path('storage/' . $course->certificate->image->url);
+            $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+        } else {
+            // La imagen no existe, muestra la imagen por defecto
+            $imagePath = public_path('img/home/4884273.jpg');
+            $imageData = file_exists($imagePath) ? base64_encode(file_get_contents($imagePath)) : '';
+        }
+
+        $qrcode = QrCode::generate(env('APP_URL') . 'certificate/' . $course->slug . '/' . $user->id);
 
 
         $html = View::make('certificate')->with([
@@ -110,11 +118,11 @@ class CourseController extends Controller
             'user' => $user,
             'courses' => $course,
             'imageData' => $imageData,
-        ])->render();    
+        ])->render();
 
-       
+
         // Instancia Dompdf
-        $dompdf = new Dompdf();      
+        $dompdf = new Dompdf();
 
         // Carga el HTML generado con el código QR en Dompdf
         $dompdf->loadHtml($html);
@@ -127,11 +135,10 @@ class CourseController extends Controller
 
         // Opcional: Guarda el PDF en el servidor
         $dompdf->stream('certificado-' . $user->name . '.pdf');
-           
-
     }
 
-    public function certificateLink(Course $course, User $user){
+    public function certificateLink(Course $course, User $user)
+    {
         return view('courseslink', compact('course', 'user'));
     }
 
@@ -170,8 +177,8 @@ class CourseController extends Controller
         //
     }
 
-    public function privacy_policy(){
+    public function privacy_policy()
+    {
         return view('privacy_policy');
-
     }
 }

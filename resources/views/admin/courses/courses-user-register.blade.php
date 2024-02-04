@@ -50,7 +50,7 @@
 
             <!-- Paletas de Ultimos -->
             <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
-        
+
                 <div class="flex justify-center items-center">
                     <!--actual component start-->
                     <div x-data="setup()" class="w-full">
@@ -61,17 +61,17 @@
                                     @click="activeTab = index" x-text="tab"></li>
                             </template>
                         </ul>
-        
+
                         <div class="h-auto w-auto text-center mx-auto ">
                             <div x-show="activeTab===0">
                                 <div class="px-6 py-4">
                                     <h1 class="font-bold text-2xl mb-2">Lista de Alumnos</h1>
-        
+
                                     {{-- LISTA DE INSCRITOS --}}
                                     @livewire('admin.courses-users-list', ['course' => $course], key('courses-' . $course->id))
                                 </div>
                             </div>
-                            <div x-show="activeTab===1">                               
+                            <div x-show="activeTab===1">
                                 <div class="flex justify-center mt-2">
                                     <div class="container py-2">
                                         <div class="card">
@@ -80,14 +80,14 @@
                                                 <hr class="mt-2 mb-6">
                                                 {!! Form::open(['route' => 'admin.course.certificate.store', 'autocomplete' => 'off', 'files' => true]) !!}
                                                 {!! Form::hidden('course_id', $course->id) !!}
-                                                    @include('admin.courses.partials.form')
-                                                    <div class="flex justify-end">
-                                                        {!! Form::submit('Registrar Informacion', ['class' => ' btn btn-primary']) !!}
-                                                    </div>
+                                                @include('admin.courses.partials.form')
+                                                <div class="flex justify-end">
+                                                    {!! Form::submit('Registrar Informacion', ['class' => ' btn btn-primary']) !!}
+                                                </div>
                                                 {!! Form::close() !!}
                                             </div>
                                         </div>
-                                
+
                                     </div>
                                     <x-slot name="js">
                                         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
@@ -97,16 +97,29 @@
                             </div>
                             <div x-show="activeTab===2">
                                 <h2 class="text-center text-3xl text-gray-600">Link</h2>
-                                <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->link}}</p>
+                                @if ($course->certificate->link ?? false)
+                                    <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->link }}
+                                    </p>
+                                @else
+                                    <p class="text-center text-gray-500 text-sm mb-6">Aun no tiene asignado un Link</p>
+                                @endif
+
                                 <h2 class="text-center text-3xl text-gray-600">Descripcion</h2>
-                                <p class="text-center text-gray-500 text-sm mb-6">{{ $course->certificate->description}}</p>
+                                @if ($course->certificate->description ?? false)
+                                    <p class="text-center text-gray-500 text-sm mb-6">
+                                        {{ $course->certificate->description }}</p>
+                                @else
+                                    <p class="text-center text-gray-500 text-sm mb-6">Aun no tiene una descripcion</p>
+                                @endif
+
                                 <h2 class="text-center text-3xl text-gray-600">PLANTILLA de Certificado</h2>
                                 @isset($course->certificate->image)
-                                <img name="picture" id="picture" class="w-full h-full object-cover object-center" src="{{ Storage::url($course->certificate->image->url) }}"> 
+                                    <img name="picture" id="picture" class="w-full h-full object-cover object-center"
+                                        src="{{ Storage::url($course->certificate->image->url) }}">
                                 @endisset
                             </div>
                         </div>
-        
+
                         <ul class="flex justify-center items-center my-4">
                             <template x-for="(tab, index) in tabs" :key="index">
                                 <li class="cursor-pointer py-3 px-4 rounded transition lg:mb-0"
@@ -114,11 +127,11 @@
                                     @click="activeTab = index" x-text="tab"></li>
                             </template>
                         </ul>
-        
+
                     </div>
                     <!--actual component end-->
                 </div>
-        
+
                 <script>
                     function setup() {
                         return {
@@ -131,7 +144,7 @@
                         };
                     };
                 </script>
-        
+
             </section>
         </div>
 

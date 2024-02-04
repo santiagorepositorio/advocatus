@@ -19,7 +19,7 @@
 </h1>
 <div class="grid grid-cols-2 gap-4">
     <figure>
-        @isset($course->image)
+        @isset($course->certificate->image)
         <img name="picture" id="picture" class="w-full h-64 object-cover object-center" src="{{ Storage::url($course->certificate->image->url) }}"> 
         @else           
         <img name="picture" id="picture" class="w-full h-64 object-cover object-center" src="https://media.istockphoto.com/id/1146532466/es/foto/fondo-digital-azul-abstracto.jpg?s=2048x2048&w=is&k=20&c=Fa-z_DwZb-gz2FSD63efzRFlW3wxfUwpjFXR-gq2jzc="> 
